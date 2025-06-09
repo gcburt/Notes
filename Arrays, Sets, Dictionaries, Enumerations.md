@@ -11,7 +11,14 @@ pets[0]
 - Adds "Amanda" to the end.
 - Calls "Murphy" because he is at the 0 index.
 
-
+```swift
+var vehicles = [String]()
+var vehicles = Array<String>()
+var vehicles: [String] = []
+```
+- Makes an empty Array.
+- Dont forget the () on the type inferance examples.
+  
 ## Sets
 ## Dictionaries
 ## Enumerations
