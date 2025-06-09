@@ -30,3 +30,18 @@
 | Highlight         | `I need to highlight these ==very important words==.` |
 | Subscript         | `H~2~O`                        |
 | Superscript       | `X^2^`   
+
+
+\
+✅	Correct / Success / Passed  
+❌	Error / Wrong / Failed  
+⚠️	Warning / Caution  
+ℹ️	Info / Note  
+🔄	In progress / Updating  
+⏳	Waiting / Loading
+> For new lines, include 2 spaces or a backslash.
+
+
+:white_check_mark:
+:x:
+:warning:
