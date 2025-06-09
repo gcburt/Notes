@@ -17,9 +17,11 @@ Variables are *mutable*, or able to be changed.
 var myJob = "Pilot"
 ```
 
-✅	Correct / Success / Passed
-❌	Error / Wrong / Failed
-⚠️	Warning / Caution
-ℹ️	Info / Note
-🔄	In progress / Updating
+\
+✅	Correct / Success / Passed  
+❌	Error / Wrong / Failed  
+⚠️	Warning / Caution  
+ℹ️	Info / Note  
+🔄	In progress / Updating  
 ⏳	Waiting / Loading
+> For new lines, include 2 spaces or a backslash.
