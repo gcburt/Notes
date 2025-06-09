@@ -1,12 +1,12 @@
 # Constant/Variables
 
-`
-let myName = "Grant"
-`
+Constants are *immutable*. They are fixed.
 
+```swift
+let myName = "Grant"
 ```
-let myLastName = "Burton"
-```
+
+Variables are *mutable*, or able to be changed.
 
 ```swift
 var myJob = "Pilot"
