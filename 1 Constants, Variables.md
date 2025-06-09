@@ -25,3 +25,8 @@ var myJob = "Pilot"
 🔄	In progress / Updating  
 ⏳	Waiting / Loading
 > For new lines, include 2 spaces or a backslash.
+
+
+:white_check_mark:
+:x:
+:warning:
