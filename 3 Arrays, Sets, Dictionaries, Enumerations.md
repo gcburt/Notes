@@ -17,6 +17,25 @@ The position of an item in an array is commonly called its *index*.
 - .append adds "Amanda" to the end.
 - [0] calls "Murphy" because he is at the 0 index.
 
+#### 2. Remove item(s)
+
+```swift
+pets.remove(at:0) // ➡️ removes Murphy
+prets.removeAll()
+```
+
+#### 3. Count
+
+```swift
+pets.count // ➡️ 5 or number of items in array
+```
+
+#### 3. Contains
+
+```swift
+pets.contains("Fido") // ❌ false
+``` 
+
 ```swift
 var vehicles = [String]()
 var vehicles = Array<String>()
