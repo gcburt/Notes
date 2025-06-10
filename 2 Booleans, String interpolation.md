@@ -1,4 +1,4 @@
-# Booleans, String interpolation
+# Booleans
 <br/>
 
 ## Booleans
