@@ -8,7 +8,7 @@
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 ```
-1. Add an item
+#### 1. Add an item
 ```swift
 pets.append("Amanda Trash Panda")
 pets[0]
