@@ -28,7 +28,7 @@ var vehicles: [String] = []
 ## Enumerations
 
 ```swift
-enum Weekdays { // :caution Notice the UpperCamelCase
+enum Weekdays {   // ⚠️ Notice the UpperCamelCase
 case monday, tuesday, wednesday, thursday, friday
 }
 
