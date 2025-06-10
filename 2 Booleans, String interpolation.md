@@ -1,3 +1,13 @@
-# Booleans 
+# Booleans, String interpolation
+<br/>
 
-# String interpolation
+## Booleans
+store true/false conditions.
+
+```swift
+let isAwake = true
+isAwake.toggle() // ➡️ false
+```
+<br/>
+
+
