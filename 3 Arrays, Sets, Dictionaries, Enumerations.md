@@ -3,16 +3,19 @@
 
 ## Arrays
 
-The position of an item in an array is commonly called its *index*.
+
 
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
-
+```
+1. Add an item
+```swift
 pets.append("Amanda Trash Panda")
 pets[0]
 ```
-- Adds "Amanda" to the end.
-- Calls "Murphy" because he is at the 0 index.
+The position of an item in an array is commonly called its *index*.
+- .append adds "Amanda" to the end.
+- [0] calls "Murphy" because he is at the 0 index.
 
 ```swift
 var vehicles = [String]()
