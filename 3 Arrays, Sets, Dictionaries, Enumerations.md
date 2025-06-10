@@ -1,3 +1,6 @@
+# Arrays, Sets, Dictionaries and Enumerations
+<br/>
+
 ## Arrays
 
 The position of an item in an array is commonly called its *index*.
@@ -18,17 +21,18 @@ var vehicles: [String] = []
 ```
 - Makes an empty Array.
 - Dont forget the () on the type inferance examples.
+<br/>
   
 ## Sets
 ## Dictionaries
 ## Enumerations
 
 ```swift
-enum Weekdays { 
+enum Weekdays { // :caution Notice the UpperCamelCase
 case monday, tuesday, wednesday, thursday, friday
 }
 
 var day = Weekdays.monday
 day = .tuesday
 ```
-// Notice the UpperCamelCase
+
