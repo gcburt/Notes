@@ -1,37 +1,41 @@
-# Constant/Variables/Strings/Intigers
+# 🧠 Constants, Variables, Strings & Integers in Swift
+<br/><br/>
 
-## Constants
-are *immutable*. They are fixed.
+## 🔐 Constants  
+Constants are **immutable** — once set, their value **cannot be changed**.
 
 ```swift
 let myName = "Grant"
 ```
 
-```swift 
+```swift
 let age = 25
 age = 30 // ❌ Error: Cannot change a constant
 ```
+<br/>
 
-## Variables 
-are *mutable*, or able to be changed.
+## 🔁 Variables  
+Variables are **mutable** — their value **can change** over time.
 
 ```swift
 var myJob = "Pilot"
+myJob = "Captain"
 ```
+<br/><br/>
 
-## Strings
+## 🧵 Strings  
+Strings are used to store **text values** like words or sentences.
 
 
-### Some tricks   
 
-1. Quotes inside a string
-   
+### ✨ String Tricks
+
+#### 1. Quotes inside a string
 ```swift
-let review = "My favorite movie is \"The Martian\".
+let review = "My favorite movie is \"The Martian\"."
 ```
 
-2. Multiple line string
-   
+#### 2. Multiline strings
 ```swift
 let haiku = """
 I like poems
@@ -40,55 +44,55 @@ good at them.
 """
 ```
 
-3. String interpolation
-
+#### 3. String interpolation
 ```swift
 let greeting = "Hi, my name is \(myName)."
 ```
 
-4. Count characters. (Includes spaces)
+#### 4. Count characters (includes spaces)
 ```swift
 let myName = "Grant"
 myName.count // ➡️ returns 5
 ```
 
-5. Read prefix/suffix
+#### 5. Read prefix and suffix
 ```swift
 let dinosaur = "velociraptor"
-dinosaur.hasPrefix("Veloci") // ❌ false (V != v)
-dinosaur.hasSuffix("raptor") // ✅ true 
+dinosaur.hasPrefix("Veloci") // ❌ false (V ≠ v)
+dinosaur.hasSuffix("raptor") // ✅ true
 ```
+<br/><br/>
 
-## 🔢 Intigers
+## 🔢 Integers
+
+An **integer** (or `Int`) is a whole number — no decimals.
+
+Examples:  
+`-5`, `0`, `42`, `100000`
 
 
 
-An integer (or Int) is a whole number — meaning it has no decimals.
+### 🧮 Integer Tricks
 
-Examples:
--5, 0, 42, 100000
-
-### Some tricks
-
-1. Common operations
+#### 1. Common operations
 ```swift
 let a = 10
 let b = 3
 
-let sum = a + b       // 13
-let difference = a - b // 7
-let product = a * b    // 30
-let quotient = a / b   // 3
-let remainder = a % b  // 1
+let sum = a + b         // 13
+let difference = a - b  // 7
+let product = a * b     // 30
+let quotient = a / b    // 3
+let remainder = a % b   // 1
 ```
 
-2. Multiples
+#### 2. Check for multiples
 ```swift
 let number = 9
-number.isMultiple(of:3) ✅ true
+number.isMultiple(of: 3) // ✅ true
 ```
 
-3. Random number
+#### 3. Generate a random number
 ```swift
 let randomNumber = Int.random(in: 1...100)
 ```
