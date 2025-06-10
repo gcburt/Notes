@@ -1,5 +1,5 @@
 # 🧠 Constants, Variables, Strings & Integers in Swift
-<br/><br/>
+<br/>
 
 ## 🔐 Constants  
 Constants are **immutable** — once set, their value **cannot be changed**.
@@ -21,7 +21,7 @@ Variables are **mutable** — their value **can change** over time.
 var myJob = "Pilot"
 myJob = "Captain"
 ```
-<br/><br/>
+<br/>
 
 ## 🧵 Strings  
 Strings are used to store **text values** like words or sentences.
@@ -61,7 +61,7 @@ let dinosaur = "velociraptor"
 dinosaur.hasPrefix("Veloci") // ❌ false (V ≠ v)
 dinosaur.hasSuffix("raptor") // ✅ true
 ```
-<br/><br/>
+<br/>
 
 ## 🔢 Integers
 
