@@ -8,6 +8,7 @@ Arrays are data types with the ability to store multiple items.
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 ```
+### ✨ String Tricks
 
 #### 1. Add an item
 ```swift
