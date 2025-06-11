@@ -8,7 +8,7 @@ Arrays are data types with the ability to store multiple items.
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 ```
-### ✨ String Tricks
+### ✨ Array Tricks
 
 #### 1. Add an item
 ```swift
@@ -59,6 +59,7 @@ var vehicles: [String] = []     //  valid
 ```swift
 var colors: Set<String> = ["red", "green", "blue"]
 ```
+### ✨ Set Tricks
 
 #### 1. Insert
 ```swift
@@ -104,6 +105,7 @@ let employee = [
     "location": "Nashville"
 ]
 ```
+### ✨ Dictionary Tricks
 
 #### 1. Access values
 ```swift
