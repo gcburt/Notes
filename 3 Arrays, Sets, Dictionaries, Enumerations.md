@@ -3,6 +3,8 @@
 
 ## 📚 Arrays
 
+Arrays are data types with the ability to store multiple items.
+
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 ```
