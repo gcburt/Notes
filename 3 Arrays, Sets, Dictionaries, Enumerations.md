@@ -1,78 +1,147 @@
-# Arrays, Sets, Dictionaries and Enumerations
+# 🧱 Arrays, Sets, Dictionaries & Enumerations
 <br/>
 
-## Arrays
-
-
+## 📚 Arrays
 
 ```swift
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 ```
-#### 1. Add an item
-```swift
-pets.append("Amanda Trash Panda")
-pets[0]
-```
-The position of an item in an array is commonly called its *index*.
-- .append adds "Amanda" to the end.
-- [0] calls "Murphy" because he is at the 0 index.
 
-#### 2. Remove item(s)
-
+### 1. Add an item
 ```swift
-pets.remove(at:0) // ➡️ removes Murphy
-prets.removeAll()
+pets.append("Amanda Trash Panda") // ➡️ :arrow_right: adds to end
+pets[0]                           // ➡️ :arrow_right: returns "Murphy"
 ```
 
-#### 3. Count
-
+### 2. Remove item(s)
 ```swift
-pets.count // ➡️ 5 or number of items in array
+pets.remove(at: 0)    // ➡️ :arrow_right: removes "Murphy"
+pets.removeAll()      // ➡️ :arrow_right: clears all items
 ```
 
-#### 3. Contains
-
+### 3. Count items
 ```swift
-pets.contains("Fido") // ❌ false
-``` 
+pets.count            // ➡️ :arrow_right: returns number of items
+```
 
-#### 4. Sorted
+### 4. Check if it contains something
+```swift
+pets.contains("Fido") // ❌ :X: false
+```
 
+### 5. Sort array
 ```swift
 let letters = ["c", "a", "e", "b", "d"]
-letters.sorted() // ➡️ ["a", "b", "c", "d", "e"]
+letters.sorted()      // ➡️ :arrow_right: ["a", "b", "c", "d", "e"]
 ```
 
-#### 5. Reversed
-
+### 6. Reverse array
 ```swift
-letters.reversed() // ➡️ ReversedCollection<Array<String>>(_base: ["c", "a", "e", "b", "d"])
+letters.reversed()    // ➡️ :arrow_right: ReversedCollection(["c", "a", "e", "b", "d"])
 ```
+:bulb: Creates a reversed collection without modifying original.
 
-- Makes the colllection on the fly. 
-#### 6. Empty arrays
-
+### 7. Empty arrays
 ```swift
-var vehicles = [String]()
-var vehicles = Array<String>()
-var vehicles: [String] = []
+var vehicles = [String]()       // :green_check_mark: valid
+var vehicles = Array<String>()  // :green_check_mark: valid
+var vehicles: [String] = []     // :green_check_mark: valid
 ```
-- Makes an empty Array.
-- Dont forget the () on the type inferance examples.
 <br/>
-  
-## Sets
 
+---
 
-## Dictionaries
-## Enumerations
+## 🟢 Sets
 
 ```swift
-enum Weekdays {   // ⚠️ Notice the UpperCamelCase
-case monday, tuesday, wednesday, thursday, friday
+var colors: Set<String> = ["red", "green", "blue"]
+```
+
+### 1. Insert
+```swift
+colors.insert("yellow")       // ➡️ :arrow_right: adds if not present
+```
+
+### 2. Check for presence
+```swift
+colors.contains("green")      // ✅ :green_check_mark: true
+colors.contains("purple")     // ❌ :X: false
+```
+
+### 3. Count
+```swift
+colors.count                  // ➡️ :arrow_right: number of unique items
+```
+
+### 4. Remove item
+```swift
+colors.remove("red")          // ➡️ :arrow_right: removes "red" if it exists
+```
+
+### 5. Convert array to set
+```swift
+let array = ["a", "b", "a"]
+let setFromArray = Set(array) // ➡️ :arrow_right: {"a", "b"}
+```
+
+### 6. Empty set
+```swift
+var emptySet = Set<String>()  // :green_check_mark: valid
+```
+<br/>
+
+---
+
+## 📒 Dictionaries
+
+```swift
+let employee = [
+    "name": "Taylor Swift",
+    "job": "Singer",
+    "location": "Nashville"
+]
+```
+
+### 1. Access values
+```swift
+employee["name"]                   // ➡️ :arrow_right: Optional("Taylor Swift")
+print(employee["name"])           // ➡️ :arrow_right: Optional("Taylor Swift")
+print(employee["age"])            // ❌ :X: nil (no key "age")
+print(employee["name", default: "Unknown"]) // ➡️ :arrow_right: "Taylor Swift"
+```
+
+### 2. Create empty dictionary
+```swift
+var employee2 = [String: String]()       // :green_check_mark: valid
+
+employee2["name"] = "Grant"
+employee2["favorite color"] = "Green"
+```
+
+### 3. Read values
+```swift
+employee2["favorite color"]       // ➡️ :arrow_right: "Green"
+```
+<br/>
+
+---
+
+## 🧩 Enumerations
+
+```swift
+enum Weekdays {
+    case monday, tuesday, wednesday, thursday, friday
 }
 
 var day = Weekdays.monday
 day = .tuesday
 ```
 
+### Notes
+- Enum types use **UpperCamelCase**
+- Cases use **lowerCamelCase** by convention
+- Shortens access: `.tuesday` is valid after `day` is declared as a `Weekdays`
+
+<br/>
+
+---
