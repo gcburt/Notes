@@ -52,7 +52,7 @@ var vehicles: [String] = []     //  valid
 ```
 <br/>
 
----
+
 
 ## 🟢 Sets
 
@@ -93,7 +93,7 @@ var emptySet = Set<String>()  //  valid
 ```
 <br/>
 
----
+
 
 ## 📒 Dictionaries
 
@@ -127,7 +127,7 @@ employee2["favorite color"]       // ➡️  "Green"
 ```
 <br/>
 
----
+
 
 ## 🧩 Enumerations
 
@@ -147,4 +147,4 @@ day = .tuesday
 
 <br/>
 
----
+
