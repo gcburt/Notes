@@ -36,6 +36,22 @@ pets.count // ➡️ 5 or number of items in array
 pets.contains("Fido") // ❌ false
 ``` 
 
+#### 4. Sorted
+
+```swift
+let letters = ["c", "a", "e", "b", "d"]
+letters.sorted() // ➡️ ["a", "b", "c", "d", "e"]
+```
+
+#### 5. Reversed
+
+```swift
+letters.reversed() // ➡️ ReversedCollection<Array<String>>(_base: ["c", "a", "e", "b", "d"])
+```
+
+- Makes the colllection on the fly. 
+#### 6. Empty arrays
+
 ```swift
 var vehicles = [String]()
 var vehicles = Array<String>()
@@ -46,6 +62,8 @@ var vehicles: [String] = []
 <br/>
   
 ## Sets
+
+
 ## Dictionaries
 ## Enumerations
 
