@@ -135,8 +135,10 @@ var emptyDictionary: [Int: Int] = [:]    // Type annotation
 employee.count // ➡️ 3
 ```
 
-.removeAll()
-
+#### 2. Remove
+```swift
+employee.removeAll()
+```
 <br/>
 
 
