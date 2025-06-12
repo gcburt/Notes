@@ -107,6 +107,7 @@ let setFromArray = Set(array) // ➡️  {"a", "b"}
 ```
 
 <br/>
+
 ## 📒 Dictionaries
 
 Dictionaries have the ability to contain multiple values. They are called with the dictionary *key*.
@@ -151,8 +152,6 @@ employee.count // ➡️ 3
 employee.removeAll()
 ```
 <br/>
-
-
 
 ## 🧩 Enumerations
 
