@@ -98,6 +98,8 @@ var emptySet = Set<String>()  //  valid
 
 ## 📒 Dictionaries
 
+Dictionaries have the ability to contain multiple values. They are called with the dictionary *key*.
+
 ```swift
 let employee = [
     "name": "Taylor Swift",
@@ -105,7 +107,6 @@ let employee = [
     "location": "Nashville"
 ]
 ```
-### ✨ Dictionary Tricks
 
 #### 1. Access values
 ```swift
@@ -118,15 +119,23 @@ print(employee["name", default: "Unknown"]) // ➡️  "Taylor Swift"
 #### 2. Create empty dictionary
 ```swift
 var employee2 = [String: String]()       //  valid
+```
 
+#### 3. Assigning values to a key
+```swift
 employee2["name"] = "Grant"
 employee2["favorite color"] = "Green"
 ```
 
-#### 3. Read values
+### ✨ Dictionary Tricks
+
+#### 1. Count 
 ```swift
-employee2["favorite color"]       // ➡️  "Green"
+employee.count // ➡️ 3
 ```
+
+.removeAll()
+
 <br/>
 
 
