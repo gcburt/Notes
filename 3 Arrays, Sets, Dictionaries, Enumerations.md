@@ -9,6 +9,13 @@ Arrays are data types with the ability to store multiple items. They are ordered
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 pets[0]    // ➡️ returns "Murphy"
 ```
+#### Empty arrays
+
+```swift
+var vehicles = [String]()     
+var vehicles = Array<String>()  
+var vehicles: [String] = []     
+```
 <br/>
 
 ### 🧰 Toolbox: Arrays
@@ -46,12 +53,6 @@ letters.reversed()    // ➡️  ReversedCollection(["c", "a", "e", "b", "d"])
 ```
 💡 Creates a reversed collection without modifying original.
 
-#### 7. Empty arrays
-```swift
-var vehicles = [String]()     
-var vehicles = Array<String>()  
-var vehicles: [String] = []     
-```
 <br/>
 
 
@@ -64,7 +65,7 @@ Sets are unordered collections of elements that do not contain duplicates.
 var colors: Set<String> = ["red", "green", "blue"]
 ```
 
-#### Creating empty sets
+#### Empty sets
 
 ```swift
 var emptySet = Set<String>() // Type inferance
@@ -126,12 +127,7 @@ print(employee["name", default: "Unknown"])   // ➡️  "Taylor Swift"
 ```
 - When name is called by a function, there is no guarantee that a value exists. It is an *optional*. The default values guarantees a value to the key.
 
-#### Assigning values to a key
-```swift
-employee["hair"] = "blonde"
-```
-
-#### Create empty dictionaries
+#### Empty dictionaries
 
 ```swift
 var emptyDictionary = [String: String]() // Type inferance
@@ -142,12 +138,17 @@ var emptyDictionary: [Int: Int] = [:]    // Type annotation
 
 ### 🧰 Toolbox: Dictionaries
 
-#### 1. Count 
+#### 1. "Inserting" assigning values to a key
+```swift
+employee["hair"] = "blonde"
+```
+
+#### 2. Count 
 ```swift
 employee.count // ➡️ 3
 ```
 
-#### 2. Remove
+#### 3. Remove
 ```swift
 employee.removeAll()
 ```
