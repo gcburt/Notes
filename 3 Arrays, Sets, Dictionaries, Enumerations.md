@@ -9,7 +9,9 @@ Arrays are data types with the ability to store multiple items. They are ordered
 var pets = ["Murphy", "Hiro", "Milkshakes", "Sasha"]
 pets[0]    // ➡️ returns "Murphy"
 ```
-### 🧰 Toolbox: Array
+<br/>
+
+### 🧰 Toolbox: Arrays
 
 #### 1. Add an item
 ```swift
@@ -56,10 +58,21 @@ var vehicles: [String] = []
 
 ## 🟢 Sets
 
+Sets are unordered collections of elements that do not contain duplicates. 
+
 ```swift
 var colors: Set<String> = ["red", "green", "blue"]
 ```
-### 🧰 Toolbox: Set
+
+#### Creating empty sets
+
+```swift
+var emptySet = Set<String>() // Type inferance
+var emptySet: Set<Int> = []  // Type annotation
+```
+<br/>
+
+### 🧰 Toolbox: Sets
 
 #### 1. Insert
 ```swift
@@ -82,20 +95,18 @@ colors.count                  // ➡️  number of unique items
 colors.remove("red")          // ➡️  removes "red" if it exists
 ```
 
+#### 5. Sort
+```swift
+colors.sorted()               // ➡️ ["blue", "green", "red"]
+```
+
 #### 5. Convert array to set
 ```swift
 let array = ["a", "b", "a"]
 let setFromArray = Set(array) // ➡️  {"a", "b"}
 ```
 
-#### 6. Empty set
-```swift
-var emptySet = Set<String>()  //  valid
-```
 <br/>
-
-
-
 ## 📒 Dictionaries
 
 Dictionaries have the ability to contain multiple values. They are called with the dictionary *key*.
@@ -126,9 +137,9 @@ var emptyDictionary = [String: String]() // Type inferance
 var emptyDictionary: [Int: Int] = [:]    // Type annotation   
 ```
 
+<br/>
 
-
-### 🧰 Toolbox: Dictionary
+### 🧰 Toolbox: Dictionaries
 
 #### 1. Count 
 ```swift
