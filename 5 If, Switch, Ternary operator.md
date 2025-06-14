@@ -1,4 +1,4 @@
-# 🔀 If Statements in Swift
+# 🔀 If Statements 
 <br/>
 
 ## 🔎 What is an If Statement?
@@ -57,14 +57,14 @@ if score >= 90 {
 
 ## 💡 Comparison Operators
 
-| Symbol | Meaning             | Example (`a = 5`, `b = 10`)        |
-|--------|----------------------|------------------------------------|
-| `==`   | equal to             | `a == 5` → ✅ :green_check_mark: true |
-| `!=`   | not equal to         | `a != b` → ✅ :green_check_mark: true |
-| `>`    | greater than         | `b > a` → ✅ :green_check_mark: true |
-| `<`    | less than            | `a < b` → ✅ :green_check_mark: true |
-| `>=`   | greater or equal     | `a >= 5` → ✅ :green_check_mark: true |
-| `<=`   | less or equal        | `a <= 5` → ✅ :green_check_mark: true |
+| Symbol | Meaning             |
+|--------|----------------------|
+| `==`   | equal to             | 
+| `!=`   | not equal to         | 
+| `>`    | greater than         | 
+| `<`    | less than            | 
+| `>=`   | greater or equal     | 
+| `<=`   | less or equal        | 
 
 <br/>
 
@@ -75,24 +75,168 @@ Use these to combine multiple conditions:
 | Operator | Name       | Example                           |
 |----------|------------|-----------------------------------|
 | `&&`     | and        | `age >= 18 && citizen == true`    |
-| `||`     | or         | `isStudent || isSenior`           |
+| `\/`     | or         | `isStudent \/ isSenior`           |
 | `!`      | not        | `!hasAccess` means "no access"    |
+
+---
 
 <br/>
 
-## ✅ Good to Know
+# 🔄 Switch Statements 
+<br/>
 
-- Use `if` when you **want to check a condition** and run code **only sometimes**.
-- Swift expects conditions to be `Bool` — you can’t write `if 1` or `if "hello"`.
+## 🧠 What is a Switch Statement?
+
+A `switch` lets you check **many possible values** of a variable and run different code for each one.
 
 ```swift
-let isLoggedIn = false
+let weather = "sunny"
 
-if !isLoggedIn {
-    print("Please log in.")  // This runs
+switch weather {
+case "rainy":
+    print("Bring an umbrella.")
+case "sunny":
+    print("Wear sunscreen.")
+default:
+    print("Check the forecast.")
 }
 ```
+
+➡️ Prints `"Wear sunscreen."`
+
+<br/>
+
+## 🧾 Why Use `switch`?
+
+- Cleaner than a long chain of `if else if`
+- Safer and more readable
+- **Must be exhaustive** (must cover all cases or use `default`)
+
+<br/>
+
+## 🔢 Matching Ints
+
+```swift
+let score = 100
+
+switch score {
+case 0:
+    print("Zero")
+case 1..<100:
+    print("Almost there")
+case 100:
+    print("Perfect score!")
+default:
+    print("Unknown score")
+}
+```
+
+➡️ You can match exact numbers or ranges.
+
+<br/>
+
+## 🎨 Matching Multiple Cases
+
+```swift
+let pet = "dog" // or cat, or rabbit...
+
+switch pet {
+case "cat", "dog", "rabbit":
+    print("It's a common pet.")
+default:
+    print("Exotic choice!")
+}
+```
+
+➡️ Use commas to match multiple values in one case.
+
+<br/>
+
+## 🧱 Fallthrough (Rarely Used)
+
+Use `fallthrough` to continue to the next case — even if the current one matched.
+
+```swift
+let number = 3
+
+switch number {
+case 3:
+    print("Three")
+    fallthrough
+case 4:
+    print("Four")
+default:
+    break
+}
+```
+
+➡️ Prints both "Three" and "Four"
+
+⚠️ `fallthrough` does **not** check the next case’s condition.
+
+<br/>
+
+## 💡 With Enums
+
+`switch` works great with enums — and helps catch missing cases.
+
+```swift
+enum Direction {
+    case north, south, east, west
+}
+
+let heading = Direction.east
+
+switch heading {
+case .north:
+    print("Going up")
+case .south:
+    print("Going down")
+case .east:
+    print("Going right")
+case .west:
+    print("Going left")
+}
+```
+
+✅ No need for `default` if you cover all enum cases.
 
 <br/>
 
 ---
+
+<br/>
+
+# ⚖️ Ternary Conditional Operator in Swift
+<br/>
+
+## 🤔 **WTF** is the Ternary Operator?
+
+The ternary operator is a **compact shortcut for `if/else`**. I'm probably not going to use it much.
+
+```swift
+let age = 20
+let canVote = age >= 18 ? "Yes" : "No"
+```
+
+➡️ Returns `"Yes"` because the condition is true.
+
+<br/>
+
+```swift
+let isSunny = true
+let message = isSunny ? "Wear sunglasses" : "Bring an umbrella"
+```
+
+➡️ Returns `"Wear sunglasses"`
+
+<br/>
+
+```swift
+let score = 85
+let result = score >= 60 ? "Pass" : "Fail"
+```
+
+➡️ Returns `"Pass"`
+
+
