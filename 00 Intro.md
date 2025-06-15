@@ -96,3 +96,16 @@ number.isMultiple(of: 3) // ✅ true
 ```swift
 let randomNumber = Int.random(in: 1...100)
 ```
+<br/>
+
+# Booleans
+<br/>
+
+## Booleans
+store true/false conditions.
+
+```swift
+let isAwake = true
+isAwake.toggle() // ➡️ false
+```
+<br/>
