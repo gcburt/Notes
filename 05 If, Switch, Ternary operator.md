@@ -75,7 +75,7 @@ Use these to combine multiple conditions:
 | Operator | Name       | Example                           |
 |----------|------------|-----------------------------------|
 | `&&`     | and        | `age >= 18 && citizen == true`    |
-| `\/`     | or         | `isStudent \/ isSenior`           |
+| `||`     | or         | `isStudent || isSenior`           |
 | `!`      | not        | `!hasAccess` means "no access"    |
 
 ---
