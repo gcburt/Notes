@@ -68,7 +68,7 @@ var colors: Set<String> = ["red", "green", "blue"]
 #### Empty sets
 
 ```swift
-var emptySet = Set<String>() // Type inferance
+var emptySet = Set<String>() // Type inference
 var emptySet: Set<Int> = []  // Type annotation
 ```
 <br/>
@@ -130,7 +130,7 @@ print(employee["name", default: "Unknown"])   // ➡️  "Taylor Swift"
 #### Empty dictionaries
 
 ```swift
-var emptyDictionary = [String: String]() // Type inferance
+var emptyDictionary = [String: String]() // Type inference
 var emptyDictionary: [Int: Int] = [:]    // Type annotation   
 ```
 
