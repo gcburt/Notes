@@ -7,10 +7,8 @@ Swift uses **error handling** to respond to **unexpected conditions**.
 Errors are values that conform to the `Error` protocol.
 
 ```swift
-enum DataError: Error {
-    case fileNotFound
-    case unreadable
-    case encodingFailed
+enum PasswordError: Error {
+    case short, obvious
 }
 ```
 
@@ -21,12 +19,22 @@ enum DataError: Error {
 Add `throws` to the function signature and use `throw` inside:
 
 ```swift
-func loadFile(named name: String) throws -> String {
-    guard let path = Bundle.main.path(forResource: name, ofType: nil) else {
-        throw DataError.fileNotFound
+func checkPassword(_ password: String) throws -> String {
+    if password.count < 5 {
+        throw PasswordError.short
     }
-    let contents = try String(contentsOfFile: path)
-    return contents
+
+    if password == "12345" {
+        throw PasswordError.obvious
+    }
+
+    if password.count < 8 {
+        return "OK"
+    } else if password.count < 10 {
+        return "Good"
+    } else {
+        return "Excellent"
+    }
 }
 ```
 
@@ -40,13 +48,17 @@ func loadFile(named name: String) throws -> String {
 ### 1️⃣ `do-catch` block
 
 ```swift
+let string = "12345"
+
 do {
-    let text = try loadFile(named: "notes.txt")
-    print(text)
-} catch DataError.fileNotFound {
-    print("File not found.")   // ➡️ :arrow_right: prints this if missing
+    let result = try checkPassword(string)
+    print("Password rating: \(result)")
+} catch PasswordError.short {
+    print("Please use a longer password.")
+} catch PasswordError.obvious {
+    print("I have the same combination on my luggage!")
 } catch {
-    print("Unexpected error: \(error).")
+    print("There was an error.")
 }
 ```
 
@@ -91,9 +103,9 @@ struct User {
 
 do {
     let user = try User(idString: "42")
-    print(user.id)      // ➡️ :arrow_right: 42
+    print(user.id)      // ➡️  42
 } catch {
-    print("Invalid ID.") // ❌ :X: if conversion fails
+    print("Invalid ID.") // ❌  if conversion fails
 }
 ```
 
@@ -122,7 +134,5 @@ func perform(operation: () throws -> Void) rethrows {
 
 <br/>
 
----
-
-**Practice:** Write a `divide(_:by:) throws -> Double` function that throws a `.divideByZero` error if the divisor is zero, otherwise returns the quotient.  
+--- 
 
