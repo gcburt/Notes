@@ -6,12 +6,14 @@
 > "Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages."
 
 🔍 In simple terms: **Closures are unnamed functions.**
-
 ```swift
 let greetClosure = {
     print("Hello, User!")
 }
 ```
+
+#### Function types
+
 ```swift
 func greetFunction() {
     print("Hello, User!")
@@ -19,7 +21,7 @@ func greetFunction() {
 
 var greetTypeAnnotation: () -> Void = greetFunction
 ```
-What's going on here? greetFunction takes no variables and returns no new values. Technically, `print()` isn't returning a string.
+greetFunction takes no variables and returns no new values. Technically, `print()` isn't returning a string.
 
 ```swift
 func getUserData(for id: Int) -> String {
@@ -34,6 +36,7 @@ let data: (Int) -> String = getUserData // no () after getUserData. Not calling 
 ```
 When it comes to closures, the names of the data type dont matter. Only the types of data types do. `for id` is ignored in the type annotation of the closure.
 
+#### Sorting function
 ```swift
 let names = ["Grant", "Hunter", "Amanda", "Scott", "Julie"]
 
