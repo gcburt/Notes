@@ -3,35 +3,81 @@
 
 ## 🧠 What Is a Closure?
 
-A **closure** is a self‑contained block of functionality you can pass around and use in your code.  
-Closures in Swift are similar to **anonymous functions** or **lambdas** in other languages.
+"Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages."
+
+Basically, they're unnamed functions.
 
 ```swift
-// Closure assigned to a variable
-let greet = { (name: String) -> String in
-    return "Hello, \(name)!"
+let greetClosure = {
+    print("Hello, User!")
+}
+```
+```swift
+func greetFunction() {
+    print("Hello, User!")
 }
 
-print(greet("Taylor")) // ➡️ :arrow_right: "Hello, Taylor!"
+var greetTypeAnnotation: () -> Void = greetFunction
 ```
-
-<br/>
-
-## ✂️ Closure Syntax
+What's going on here? greetFunction takes no variables and returns no new values. Technically, `print()` isn't returning a string.
 
 ```swift
-{ (parameters) -> ReturnType in
-    // code
+func getUserData(for id: Int) -> String {
+    if id == 1989 {
+        return "Taylor Swift"
+    } else {
+        return "anonymous"
+    }
 }
+
+let data: (Int) -> String = getUserData // no () after getUserData. Not calling function, only assigning.
+```
+When it comes to closures, the names of the data type dont matter. Only the types of data types do. `for id` is ignored in the type annotation of the closure.
+
+```swift
+let names = ["Grant", "Hunter", "Amanda", "Scott", "Julie"]
+
+func meFirstSorted(name1: String, name2: String) -> Bool {
+    if name1 == "Grant" {
+        return true
+    } else if name2 == "Grant" {
+        return false
+    }
+    
+    return name1 < name2
+}
+
+let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // or
+let sortedNames = names.sorted(by: meFirstSorted)
 ```
 
-| Part            | Description                               |
-|-----------------|-------------------------------------------|
-| `(parameters)`  | Input values, like a function signature   |
-| `-> ReturnType` | What the closure returns                  |
-| `in`            | Separator between signature and body      |
+```swift
+let meFirstSortedClosure = names.sorted(by: { (name1: String, name2: String) -> Bool in
+    if name1 == "Grant" {
+        return true
+    } else if name2 == "Grant" {
+        return false
+    }
+    
+    return name1 < name2
+})
+```
+Breakdown
+1. `names.sorted` The **sorted()** function is being called on the **names** array.
+2. `(by: ___)` The **sorted()** function has a parameter.
+3. `{ (name1: String, name2: String) -> Bool in ...}` The parameter is a custom closure.
+4. `})` Pay attention to where the parameter and closure begins.
+5. Everything after `in` is just code from before.
 
-<br/>
+
+
+
+
+
+
+
+
+
 
 ## 🔄 Trailing Closure
 
