@@ -6,13 +6,14 @@
 > "Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C and to lambdas in other programming languages."
 
 🔍 In simple terms: **Closures are unnamed functions.**
+
 ```swift
 let greetClosure = {
     print("Hello, User!")
 }
 ```
 
-#### Function types
+### 🧾 Function Types
 
 ```swift
 func greetFunction() {
@@ -21,7 +22,9 @@ func greetFunction() {
 
 var greetTypeAnnotation: () -> Void = greetFunction
 ```
-greetFunction takes no variables and returns no new values. Technically, `print()` isn't returning a string.
+
+🧠 `greetFunction` takes no variables and returns no new values.  
+Technically, `print()` isn't returning a string.
 
 ```swift
 func getUserData(for id: Int) -> String {
@@ -32,11 +35,14 @@ func getUserData(for id: Int) -> String {
     }
 }
 
-let data: (Int) -> String = getUserData // no () after getUserData. Not calling function, only assigning.
+let data: (Int) -> String = getUserData // ➡️  no () — not calling, only assigning
 ```
-When it comes to closures, the names of the data type dont matter. Only the types of data types do. `for id` is ignored in the type annotation of the closure.
 
-#### Sorting function
+🧠 When it comes to closures, the names of the parameters don’t matter.  
+Only the **types** do. `for id` is ignored in the closure’s type annotation.
+
+### 🔢 Sorting Function
+
 ```swift
 let names = ["Grant", "Hunter", "Amanda", "Scott", "Julie"]
 
@@ -46,12 +52,12 @@ func meFirstSorted(name1: String, name2: String) -> Bool {
     } else if name2 == "Grant" {
         return false
     }
-    
+
     return name1 < name2
 }
 
 let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // or
-let sortedNames = names.sorted(by: meFirstSorted)
+let sortedNames = names.sorted(by: meFirstSorted)              
 ```
 
 ```swift
@@ -61,16 +67,29 @@ let meFirstSortedClosure = names.sorted(by: { (name1: String, name2: String) -> 
     } else if name2 == "Grant" {
         return false
     }
-    
+
     return name1 < name2
 })
 ```
-Breakdown
-1. `names.sorted` The **sorted()** function is being called on the **names** array.
-2. `(by: ___)` The **sorted()** function has a parameter.
-3. `{ (name1: String, name2: String) -> Bool in ...}` The parameter is a custom closure.
-4. `})` Pay attention to where the parameter and closure begins.
-5. Everything after `in` is just code from before.
+
+### 🧵 Breakdown
+
+1. `names.sorted`  
+   The **sorted()** function is being called on the **names** array.
+
+2. `(by: ___)`  
+   The **sorted()** function has a parameter.
+
+3. `{ (name1: String, name2: String) -> Bool in ... }`  
+   The parameter is a custom closure.
+
+4. `})`  
+   Pay attention to where the parameter and closure begin.
+
+5. Everything after `in`  
+   is just code from before.
+
+
 
 
 
@@ -92,7 +111,7 @@ let numbers = [1, 2, 3, 4]
 let doubled = numbers.map { number in
     number * 2
 }
-print(doubled) // ➡️ :arrow_right: [2, 4, 6, 8]
+print(doubled) // ➡️  [2, 4, 6, 8]
 ```
 
 <br/>
@@ -103,7 +122,7 @@ Swift lets you omit parameter lists and use `$0`, `$1`, etc.:
 
 ```swift
 let sorted = numbers.sorted { $0 > $1 }
-print(sorted) // ➡️ :arrow_right: [4, 3, 2, 1]
+print(sorted) // ➡️  [4, 3, 2, 1]
 ```
 
 <br/>
@@ -122,14 +141,14 @@ func add(_ x: Int, _ y: Int) -> Int {
 }
 
 let result = performOperation(4, 5, using: add)
-print(result) // ➡️ :arrow_right: 9
+print(result) // ➡️  9
 ```
 
 You can also pass a closure directly:
 
 ```swift
 let product = performOperation(4, 5) { $0 * $1 }
-print(product) // ➡️ :arrow_right: 20
+print(product) // ➡️  20
 ```
 
 <br/>
