@@ -13,7 +13,7 @@ let greetClosure = {
 }
 ```
 
-You can also assign regular functions to variables using type annotations:
+You can also assign regular functions to a variable, as long as the types match:
 
 ```swift
 func greetFunction() {
@@ -23,13 +23,16 @@ func greetFunction() {
 var greetTypeAnnotation: () -> Void = greetFunction
 ```
 
-- `greetFunction` takes no parameters and returns nothing.  
-- `print()` outputs to console but doesn’t return a value.  
-- `() -> Void` describes a function that returns no value.
+🧠 What's going on here?  
+- `greetFunction` takes **no parameters** and returns **nothing**.  
+- Technically, `print()` outputs to the console but doesn’t return a value.  
+- So its type is `() -> Void`.
 
 <br/>
 
-## 📬 Assigning a Function to a Variable
+## 💡 Assigning Functions to Variables
+
+You can assign a named function to a variable as long as the types line up:
 
 ```swift
 func getUserData(for id: Int) -> String {
@@ -44,12 +47,14 @@ let data: (Int) -> String = getUserData
 ```
 
 📝 Note:  
-- There's **no `()`** after `getUserData` — we are assigning the **function**, not calling it.  
-- The name `for id` is ignored in the closure type. Only the data types matter.
+- There are **no parentheses** after `getUserData`.  
+- We are assigning the **function**, not calling it.  
+- Parameter **labels like `for`** are ignored in closure type annotations.  
+- Only the types of the parameters matter.
 
 <br/>
 
-## 🔃 Using Closures for Custom Sorting
+## 🔃 Sorting with Functions
 
 ```swift
 let names = ["Grant", "Hunter", "Amanda", "Scott", "Julie"]
@@ -60,14 +65,15 @@ func meFirstSorted(name1: String, name2: String) -> Bool {
     } else if name2 == "Grant" {
         return false
     }
+
     return name1 < name2
 }
 
-let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // valid
-let sortedNames2 = names.sorted(by: meFirstSorted)              // also valid
+let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // or
+let sortedNames = names.sorted(by: meFirstSorted)
 ```
 
-You can also rewrite that same logic as an **inline closure**:
+You can write the same sorting logic **as a closure** instead of using a named function:
 
 ```swift
 let meFirstSortedClosure = names.sorted(by: { (name1: String, name2: String) -> Bool in
@@ -76,33 +82,31 @@ let meFirstSortedClosure = names.sorted(by: { (name1: String, name2: String) -> 
     } else if name2 == "Grant" {
         return false
     }
+
     return name1 < name2
 })
 ```
 
 <br/>
 
-### 📦 Breakdown
+### 🔍 Breakdown
 
-1. `names.sorted` — We are calling the `sorted()` method on the `names` array.  
-2. `(by: ___)` — The method takes a **closure** as a parameter.  
-3. `{ (name1: String, name2: String) -> Bool in ... }` — This is the full closure being passed in.  
-4. `in` — Separates the parameters from the closure body.  
-5. The body logic is identical to what was defined in the named function earlier.
+1. `names.sorted`  
+   The `sorted()` function is being called on the `names` array.  
+
+2. `(by: ___)`  
+   The `sorted()` function accepts a **closure** as a parameter.  
+
+3. `{ (name1: String, name2: String) -> Bool in ... }`  
+   This is the full closure expression passed to `sorted()`.  
+
+4. `})`  
+   Pay attention to where the closure starts and ends.
+
+5. Everything after `in` is just Swift logic — in this case, sorting logic.
 
 ---
 
-✅ **Practice:**  
-- Rewrite the sorting closure using shorthand: `$0` and `$1`.  
-- Try assigning a closure that takes two numbers and returns their product.
-
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
 
 
