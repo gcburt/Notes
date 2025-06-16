@@ -61,8 +61,8 @@ func meFirstSorted(name1: String, name2: String) -> Bool {
     return name1 < name2
 }
 
-let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // ✅ works
-let sortedNames2 = names.sorted(by: meFirstSorted)              // ✅ shorthand
+let sortedNames = names.sorted(by: meFirstSorted(name1:name2:)) // or
+let sortedNames = names.sorted(by: meFirstSorted)              
 ```
 
 <br/>
