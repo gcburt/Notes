@@ -1,3 +1,90 @@
+```swift
+import SwiftUI
+
+struct ContentView: View {
+    
+    @State private var inputValue: Double = 0
+    @State private var measurementType: MeasurementType = .fahrenheit
+    
+    enum MeasurementType {
+        case fahrenheit
+        case celsius
+        case kelvin
+    }
+    
+    var fahrenheit: Double {
+        if measurementType == .fahrenheit {
+            return inputValue
+        } else if measurementType == .celsius {
+            return inputValue * 9 / 5 + 32
+        } else if measurementType == .kelvin {
+            return inputValue * 9 / 5 - 459.67
+        } else {
+            return 0.0
+        }
+    }
+    
+    var celsius: Double {
+        if measurementType == .fahrenheit {
+            return (inputValue - 32) * 5 / 9
+        } else if measurementType == .celsius {
+            return inputValue
+        } else if measurementType == .kelvin {
+            return inputValue - 273.15
+        } else {
+            return 0.0
+        }
+    }
+    
+    var kelvin: Double {
+        if measurementType == .fahrenheit {
+            return (inputValue - 32) * 5 / 9 + 273.15
+        } else if measurementType == .celsius {
+            return inputValue + 273.15
+        } else if measurementType == .kelvin {
+            return inputValue
+        } else {
+            return 0.0
+        }
+    }
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Input Temperature") {
+                    TextField("Input Temperature", value: $inputValue, format: .number)
+                    
+                    Picker("Measurement Type", selection: $measurementType) {
+                        Text("Fahrenheit").tag(MeasurementType.fahrenheit)
+                        Text("Celsius").tag(MeasurementType.celsius)
+                        Text("Kelvin").tag(MeasurementType.kelvin)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
+                Section("Fahrenheit") {
+                    Text(fahrenheit, format: .number)
+                }
+                
+                Section("Celsius") {
+                    Text(celsius, format: .number)
+                }
+                
+                Section("Kelvin") {
+                    Text(kelvin, format: .number)
+                }
+            }
+            .navigationBarTitle("Temperature Conversion")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
+
 # 🧱 SwiftUI Basics 
 <br/>
 
@@ -59,3 +146,4 @@ Image(systemName: "globe")
 Text("Hello, world!")
     .padding()
 ```
+
