@@ -1,167 +1,170 @@
-# 🏛️ Classes & Inheritance in Swift  
-<br/>
 
-## 🏗️ Defining a Class
+## Classes
+
 
 ```swift
-class Animal {
-    var name: String
-
-    init(name: String) {
-        self.name = name
+class Employee {
+    let hours: Int
+    
+    init(hours: Int) {
+        self.hours = hours
     }
+    
+    func hoursWorked() {
+        print("i work \(hours) hours")
+    }
+}
 
-    func speak() {
-        print("\(name) makes a sound")
+class Manager: Employee {
+    func work() -> String {
+        "Managing..."
+    }
+}
+
+final class Developer: Employee {
+    func code() -> String {
+        "Coding..."
+    }
+    
+    override func hoursWorked() {
+        print("i work \(hours) hours \(code())")
+    }
+}
+
+let grant = Developer(hours: 160)
+grant.hoursWorked()
+```
+
+**Breakdown:**
+
+- 1. class looks identical to a struct.  
+- 2. It requires an initializer.  
+- 3. The function hoursWorked() is in the master class. It is inherited into the child classes  
+- 4. The developer class contains an override to hoursWorked(). It will run instead.  
+- 5. The developer class is *final*. Making classes final by default leads to performnce increases. Individual methods can also be marked final.
+
+---
+
+## Class initializers
+
+```swift
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConvertible: Bool
+    
+    init(isElectric: Bool, isConvertable: Bool) {
+        self.isConvertible = isConvertable // Format: type name = parameter // let isConvertable = true
+        super.init(isElectric: isElectric)
     }
 }
 ```
 
-- `class` keyword defines a reference type.  
-- Use `init` for initialization.  
-- Methods and properties belong to instances.
+**Breakdown:**
 
-<br/>
+- 1. The Car class has an additional property, isConvertable.  
+- 2. It doesn't have a default value, so it must be initialized.  
+- 3. Because it requires an initializer, super.init is required to inherit the master class's init.
 
-## 🚶‍♂️ Creating & Using Instances
+---
 
-```swift
-let creature = Animal(name: "Fido")
-creature.speak()   // ➡️ :arrow_right: "Fido makes a sound"
-```
-
-- Classes are **reference types**: multiple variables can reference the same instance.
+## Copying classes
 
 ```swift
-let pet1 = creature
-pet1.name = "Rex"
-print(creature.name) // ➡️ :arrow_right: "Rex" (both refer to same object)
-```
-
-<br/>
-
-## 🧬 Inheritance
-
-```swift
-class Dog: Animal {
-    var breed: String
-
-    init(name: String, breed: String) {
-        self.breed = breed
-        super.init(name: name)   // call superclass initializer
-    }
-
-    override func speak() {
-        print("\(name) barks")    // overrides parent method
-    }
+class UserProfile {
+    var username = "Anonymous"
 }
 
-let dog = Dog(name: "Buddy", breed: "Beagle")
-dog.speak()        // ➡️ :arrow_right: "Buddy barks"
+var user1 = UserProfile() // This is an initializer. It requires ().
+var user2 = user1
+
+user2.username =  "Swift"
+user1.username // "Swift"
+
+// Swift is updated everywhere.
 ```
 
-- Subclass with `class Subclass: Superclass`.  
-- Use `override` to change inherited methods.  
-- Call `super` to access parent behavior.
-
-<br/>
-
-## 🔒 Preventing Inheritance
-
 ```swift
-final class Cat: Animal {
-    override func speak() {
-        print("\(name) meows")
+class UserProfileCopy {
+    var username = "Anonymous"
+    
+    func copy() -> UserProfileCopy {
+        let user = UserProfileCopy()
+        user.username = username
+        return user
     }
 }
-
-// class BigCat: Cat {} // ❌ :X: cannot inherit from final class 'Cat'
 ```
 
-- `final` stops other classes from subclassing.
+// This allows us to create unique Users on the fly.
 
-<br/>
+---
 
-## 🚀 Overriding Properties
-
-```swift
-class Rectangle {
-    var width: Double
-    var height: Double
-
-    init(w: Double, h: Double) {
-        width = w; height = h
-    }
-
-    var area: Double {
-        return width * height
-    }
-}
-
-class Square: Rectangle {
-    override var area: Double {
-        return width * width   // specialized computation
-    }
-}
-
-let square = Square(w: 4, h: 4)
-print(square.area)  // ➡️ :arrow_right: 16
-```
-
-- You can override **computed** properties with `override var`.
-
-<br/>
-
-## 🛠️ Deinitializers
+## Deinitialization
 
 ```swift
-class Tracker {
+class UserDeinitialized {
     let id: Int
 
     init(id: Int) {
         self.id = id
-        print("Tracker \(id) created")
+        print("User \(id): I'm alive!")
     }
 
     deinit {
-        print("Tracker \(id) destroyed")
+        print("User \(id): I'm dead!")
     }
 }
 
-for i in 1...2 {
-    let t = Tracker(id: i)
+for i in 1...3 {
+    let user = UserDeinitialized(id: i)
+    print("User \(user.id): I'm in control.")
 }
-// ➡️ :arrow_right: "Tracker 1 created"
-// ➡️ :arrow_right: "Tracker 2 created"
-// ➡️ :arrow_right: "Tracker 2 destroyed"
-// ➡️ :arrow_right: "Tracker 1 destroyed"
 ```
 
-- `deinit` runs when an instance is deallocated (reference count hits zero).
-
-<br/>
-
-## 🔍 Type Checking & Casting
+```text
+// User 1: I'm alive!
+// User 1: I'm in control.
+// User 1: I'm dead!
+// User 2: I'm alive!
+// User 2: I'm in control.
+// User 2: I'm dead!
+// User 3: I'm alive!
+// User 3: I'm in control.
+// User 3: I'm dead!
+```
 
 ```swift
-if dog is Animal {
-    print("Dog is an Animal")           // ➡️ :arrow_right: true
+var users = [UserDeinitialized]()
+
+for i in 1...3 {
+    let user = UserDeinitialized(id: i)
+    print("User \(user.id): I'm in control!")
+    users.append(user)
 }
 
-if let someAnimal = dog as? Animal {
-    someAnimal.speak()                 // ➡️ :arrow_right: "Buddy barks"
-}
+print("Loop is finished!")
+users.removeAll()
+print("Array is clear!")
 ```
 
-- Use `is` to check type.  
-- Use `as?` for conditional downcast.  
-- Use `as!` for forced downcast (crashes if invalid).
+```text
+// User 1: I'm alive!
+// User 1: I'm in control!
+// User 2: I'm alive!
+// User 2: I'm in control!
+// User 3: I'm alive!
+// User 3: I'm in control!
+// Loop is finished!
+// User 1: I'm dead!
+// User 2: I'm dead!
+// User 3: I'm dead!
+// Array is clear!
+```
 
-<br/>
-
----
-
-✅ **Practice:**  
-- Create a base class `Vehicle` with `speed` and `drive()` method.  
-- Subclass `Car` and `Bicycle`, override `drive()` with custom behavior.  
-- Experiment with `final` and observe deinitializer calls.  
