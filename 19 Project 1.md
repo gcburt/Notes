@@ -107,7 +107,7 @@ struct ContentView: View {
     ContentView()
 }
 ```
-<img width="279" alt="Screenshot 2025-07-01 at 2 52 36 PM" src="https://github.com/user-attachments/assets/50c98b19-1fa8-43af-9194-cbadaf64edc3" />
+<img width="200" alt="Screenshot 2025-07-01 at 2 52 36 PM" src="https://github.com/user-attachments/assets/50c98b19-1fa8-43af-9194-cbadaf64edc3" />
 
 
 ### 1. `import SwiftUI`  
@@ -169,7 +169,8 @@ struct ContentView: View {
 }
 ```
 
-<img width="275" alt="Screenshot 2025-07-01 at 2 58 01 PM" src="https://github.com/user-attachments/assets/76b777ed-6c41-418d-bb8b-f268bc0555ae" />
+<img width="200" alt="Screenshot 2025-07-01 at 2 58 01 PM" src="https://github.com/user-attachments/assets/76b777ed-6c41-418d-bb8b-f268bc0555ae" />
+<img width="200" alt="Screenshot 2025-07-02 at 1 56 18 PM" src="https://github.com/user-attachments/assets/7b59295e-4e46-42cf-9611-e8e519b4d820" />
 
 ## Adding a Navigation Bar
 
@@ -199,6 +200,47 @@ struct ContentView: View {
 - The navigation bar is attached to the first visible `View` inside the `NavigationStack`. In this instance, it's a `Form`.
 - The `.navigationBarTitleDisplayMode()` contains 3 options.
 
-<img width="269" alt="Screenshot 2025-07-01 at 3 28 08 PM" src="https://github.com/user-attachments/assets/a5a7fa8c-04d0-4589-b510-6c2cb0ae537a" />
+<img width="200" alt="Screenshot 2025-07-01 at 3 28 08 PM" src="https://github.com/user-attachments/assets/a5a7fa8c-04d0-4589-b510-6c2cb0ae537a" />
 
-##
+## @State
+> Views are a function of their @State. 
+
+```swift
+struct ContentView: View {
+    @State private var tapCount = 0
+    
+    var body: some View {
+        Button("Tap Count is \(tapCount)") {
+            tapCount += 1
+        }
+    }
+}
+```
+
+- @State allows us to modify a struct. It's a workaround for when mutating isn't available.
+- Private is optional, but recommended.
+  
+<img width="200" alt="Screenshot 2025-07-01 at 9 14 27 PM" src="https://github.com/user-attachments/assets/a11f0bb4-f8a0-4403-b165-941d39a3ba21" />
+
+## Binding @State to interface controls
+> When you start adding interface controls, if you want the user to have the ability to update variables, you need to assign the $ modifier. This is called **two-way binding**.
+
+```swift
+struct ContentView: View {
+    @State private var name = ""
+    
+    var body: some View {
+        Form {
+            TextField("Enter your name", text: $name)
+            Text("\(name) has a huge pp")
+        }
+    }
+}
+```
+
+- `Form` makes this look way better. Otherwise, it looks like microsoft word.
+- $name reads and writes
+- name reads
+  
+<img width="200" alt="Screenshot 2025-07-02 at 2 08 52 PM" src="https://github.com/user-attachments/assets/8ecd5d38-a5f4-4a61-817f-f96b6ebbeb41" />
+
