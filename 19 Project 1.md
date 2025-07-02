@@ -107,6 +107,8 @@ struct ContentView: View {
     ContentView()
 }
 ```
+<img width="279" alt="Screenshot 2025-07-01 at 2 52 36 PM" src="https://github.com/user-attachments/assets/50c98b19-1fa8-43af-9194-cbadaf64edc3" />
+
 
 ### 1. `import SwiftUI`  
 Loads the **SwiftUI framework**, which gives you tools to build user interfaces.  
@@ -147,3 +149,56 @@ Text("Hello, world!")
     .padding()
 ```
 
+
+## Creating a Form
+> Forms are scrolling lists of static controls like text and images, but can also include user interactive controls like text fields, toggle switches, buttons, and more.
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        Form {
+            Section {
+                Text("This is a \"Text\" view")
+            }
+            
+            Section {
+                Text("with two Sections.")
+            }
+        }
+    }
+}
+```
+
+<img width="275" alt="Screenshot 2025-07-01 at 2 58 01 PM" src="https://github.com/user-attachments/assets/76b777ed-6c41-418d-bb8b-f268bc0555ae" />
+
+## Adding a Navigation Bar
+
+`NavigationStack`
+> "A view that displays a root view and enables you to present additional views over the root view." It's comparable to the spine of a book. It is structural, but doesn't contain any visible information.
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    Text("This is a \"Text\" view")
+                }
+                
+                Section {
+                    Text("with two Sections.")
+                }
+            }
+            .navigationTitle(".navigationTitle")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+```
+
+- The navigation bar is attached to the first visible `View` inside the `NavigationStack`. In this instance, it's a `Form`.
+- The `.navigationBarTitleDisplayMode()` contains 3 options.
+
+<img width="269" alt="Screenshot 2025-07-01 at 3 28 08 PM" src="https://github.com/user-attachments/assets/a5a7fa8c-04d0-4589-b510-6c2cb0ae537a" />
+
+##
