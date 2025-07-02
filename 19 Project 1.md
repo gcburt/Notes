@@ -244,3 +244,47 @@ struct ContentView: View {
   
 <img width="200" alt="Screenshot 2025-07-02 at 2 08 52 PM" src="https://github.com/user-attachments/assets/8ecd5d38-a5f4-4a61-817f-f96b6ebbeb41" />
 
+## ForEach
+
+```swift
+struct ContentView: View {
+    @State private var name = ""
+    
+    var body: some View {
+        Form {
+            ForEach(0..<100) { anyNameWorks in
+                Text("loop number \(anyNameWorks)") // $0 works too
+            }
+        }
+    }
+}
+```
+<img width="200" alt="Screenshot 2025-07-02 at 2 24 31 PM" src="https://github.com/user-attachments/assets/7659b1cf-c29d-4625-afd6-06915b4b9bfc" />
+
+## Picker
+
+```swift
+struct ContentView: View {
+    let pets = ["sasha", "milkshakes", "amanda", "hunter"]
+    @State private var favoritePet = "sasha"
+    
+    var body: some View {
+        NavigationStack{
+            Form {
+                Picker("Select pet", selection: $favoritePet) {
+                    ForEach(pets, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
+            .navigationTitle("NavigationStack needed this for title")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+```
+ - Picker("Text", selection: $twoWayBinding) { code }
+ - The Picker contaings a ForEach loop that reads the pets constant.
+ - `id: \.self` Each string in the pets array ("sasha", "milkshakes", etc.) is unique.
+SwiftUI uses that string as the ID to track and differentiate items.
+<img width="200" alt="Screenshot 2025-07-02 at 2 36 45 PM" src="https://github.com/user-attachments/assets/55b9a384-ef5f-4aeb-980e-b9d71bb2f61e" />
