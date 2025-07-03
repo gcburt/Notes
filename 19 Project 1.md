@@ -288,3 +288,45 @@ struct ContentView: View {
  - `id: \.self` Each string in the pets array ("sasha", "milkshakes", etc.) is unique.
 SwiftUI uses that string as the ID to track and differentiate items.
 <img width="200" alt="Screenshot 2025-07-02 at 2 36 45 PM" src="https://github.com/user-attachments/assets/55b9a384-ef5f-4aeb-980e-b9d71bb2f61e" />
+
+```swift
+struct ContentView: View {
+    @State private var favoriteNumber: Int = 0
+    var body: some View {
+        Form {
+            Picker("Favorite Number", selection: $favoriteNumber) {
+                ForEach(1...3, id: \.self) { number in
+                    Text("\(number)")
+                }
+            }
+            .pickerStyle(.segmented)
+        }
+    }
+}
+```
+- Get in the habit of writing id: \.self next to ForEach. It's not always required, but makes the id explicit.
+- Maybe avoid shorthand syntax for now.
+
+<img width="200" alt="Screenshot 2025-07-02 at 11 35 11 PM" src="https://github.com/user-attachments/assets/1add5574-42c2-4798-b9a0-33a04fb6b8d0" />
+
+## currency
+
+```swift
+struct ContentView: View {
+    @State private var money: Int = 0
+    
+    var body: some View {
+        Form {
+            TextField("Money", value: $money, format: .currency(code: Locale.current.currency? .identifier ?? "USD"))
+                .keyboardType(.decimalPad)
+        }
+    }
+}
+```
+
+- This `TextField` uses a currency. Not only is it not a string, it's a special intiger. The format is `.currency(code: "USD")`
+- Locale is a struct with many paramers.
+- `.current.currency? .identifier` returns the current currency three letter identifier.
+- `?? "USD"` is the nil coalescing operator.
+
+<img width="200" alt="Screenshot 2025-07-02 at 11 41 28 PM" src="https://github.com/user-attachments/assets/91ddbac7-e573-4e1c-a400-21a0727141bc" />
