@@ -330,3 +330,36 @@ struct ContentView: View {
 - `?? "USD"` is the nil coalescing operator.
 
 <img width="200" alt="Screenshot 2025-07-02 at 11 41 28 PM" src="https://github.com/user-attachments/assets/91ddbac7-e573-4e1c-a400-21a0727141bc" />
+
+## Hiding the numberical keyboard
+
+```swift
+struct ContentView: View {
+    @State private var number: Int = 0
+    @FocusState private var isFocused: Bool
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                TextField("Placeholder", value: $number, format: .number)
+                    .keyboardType(.decimalPad)
+                    .focused($isFocused)
+            }
+            .toolbar {
+                if isFocused {
+                    Button("Done") {
+                        isFocused = false
+                    }
+                }
+            }
+        }
+    }
+}
+```
+- 3 tasks
+1. Make a `@FocusedState` variable
+2. Attach it to the relevant `TextField`
+3. Make a button. I attached it to a toolbar.
+   
+<img width="200" alt="Screenshot 2025-07-03 at 1 31 07 PM" src="https://github.com/user-attachments/assets/f26a89ee-dab8-4b38-92ba-f0ad6ea7e06c" />
+
