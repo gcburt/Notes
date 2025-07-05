@@ -248,4 +248,26 @@ struct ContentView: View {
 > Use the second option. SwiftUI will automatically decide the formatting style.
 <img width="209" alt="Screenshot 2025-07-04 at 2 38 36 PM" src="https://github.com/user-attachments/assets/cde40cdc-23c1-47f5-b84a-c8cf3786bdb2" />
 
+## Alerts
+
+```swift
+struct ContentView: View {
+    @State private var showAlert: Bool = false
+    @State private var word: String = ""
+    
+    var body: some View {
+        Button("Button") {
+            showAlert = true
+        }
+        .alert("Whoa man", isPresented: $showAlert) {
+            Button("okiedokie") {}
+            Button("Custom destructive", role: .destructive) {}
+            Button("Custom cancel", role: .cancel) {}
+        } message: {
+            Text("This works with TextField too??")
+        }
+    }
+}
+```
+<img width="150" alt="Screenshot 2025-07-05 at 10 04 21 AM" src="https://github.com/user-attachments/assets/73711528-3ad3-4048-baa7-b0234d4d8312" />
 
