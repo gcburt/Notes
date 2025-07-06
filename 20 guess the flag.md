@@ -1,3 +1,75 @@
+```swift
+struct ContentView: View {
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
+    @State private var correctAnswer = Int.random(in: 0...2)
+    @State private var score = 0
+    @State private var gotWrongAnswer: Bool = false
+    
+    var body: some View {
+        ZStack {
+            LinearGradient(stops: [Gradient.Stop(color: .blue, location: 0.4), Gradient.Stop(color: .clear, location: 1.0)], startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            VStack(spacing: 20) {
+                VStack {
+                    VStack {
+                    Text("Choose the flag for")
+                        .foregroundStyle(.white)
+                        .font(.subheadline.weight(.heavy))
+                    Text(countries[correctAnswer])
+                        .foregroundStyle(.white)
+                        .font(.largeTitle.weight(.semibold))
+                    Text("\(score)")
+                        .foregroundStyle(.white)
+                        .font(.largeTitle.weight(.medium))
+                }
+                    VStack {
+                        ForEach(0...2, id: \.self) { c in
+                            Button {
+                                answerQuestion(c)
+                                reshuffle()
+                            } label: {
+                                Image(countries[c])
+                                    .clipShape(.buttonBorder)
+                                    .shadow(radius: 0.5)
+                            }
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 20)
+                .background(.ultraThinMaterial)
+                .clipShape(.rect(cornerRadius: 20))
+            }
+            .padding()
+            .alert("Wrong", isPresented: $gotWrongAnswer) {
+                Button("I suck", role: .destructive) {}
+                Button("I suck", role: .cancel) {}
+            }
+            message: {
+                Text("You Suck")
+            }
+        }
+        
+    }
+    
+    func answerQuestion(_ c: Int) {
+        if c == correctAnswer {
+            score += 1
+        } else {
+           gotWrongAnswer = true
+            score = 0
+        }
+    }
+    
+    func reshuffle() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+    }
+}
+```
+<img width="150" alt="Screenshot 2025-07-05 at 8 57 27 PM" src="https://github.com/user-attachments/assets/b42cf3c5-420c-4719-8567-29d1a642cbb0" />
+
+
 ## VStack, HStack and ZStack
 > These stacks arrange views vertically, horizontally and depthwise. Declaring views explicittly allows 3 things.
 1. Spacing is now controlled
