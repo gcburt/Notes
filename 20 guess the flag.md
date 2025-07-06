@@ -277,32 +277,35 @@ struct ContentView: View {
 
 ```swift
 struct ContentView: View {
+    @State private var bigRedShinyButton: Bool = false
+    
     var body: some View {
-        VStack {
-            Button("Button 1") {}
-                .buttonStyle(.bordered)
-            Button("Button 2") {}
-                .buttonStyle(.borderedProminent)
-            Button("Button 3", role: .destructive) {}
-                .buttonStyle(.bordered)
-            Button("Button 4", role: .destructive) {}
-                .buttonStyle(.borderedProminent)
-            Button("Button 5") {}
-                .buttonStyle(.borderedProminent)
-                .tint(.green)
-            Button {
-                print("Something")
-            } label: {
-                Text("Button 6")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.indigo)
-            }
+        Button("Button") {}
+            .buttonStyle(.bordered)
+        Button("Button") {}
+            .buttonStyle(.borderedProminent)
+        Button("Button", role: .destructive) {}
+            .buttonStyle(.bordered)
+        Button("Button", role: .destructive) {}
+            .buttonStyle(.borderedProminent)
+        Button("Button") {}
+            .buttonStyle(.bordered)
+            .tint(.green)
+        Button {}
+        label: {
+            Text("Button")
+                .padding(10)
+                .foregroundStyle(.white)
+                .background(.green)
+                .clipShape(.rect(cornerRadius: 10))
+            
         }
     }
 }
+
 ```
-<img width="211" alt="Screenshot 2025-07-04 at 2 29 03 PM" src="https://github.com/user-attachments/assets/4e3e0ba2-8fc9-4978-9a83-9b68c3f9fea8" />
+<img width="150" alt="Screenshot 2025-07-06 at 1 39 59 PM" src="https://github.com/user-attachments/assets/a77a5fe2-ef95-4892-ba5f-4dc622923029" />
+
 
 #### Images
 
