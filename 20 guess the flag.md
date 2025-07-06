@@ -4,6 +4,38 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var score = 0
     @State private var gotWrongAnswer: Bool = false
+    @State private var wrongAnswerChoice: String = ""
+    @State private var questionNumber: Int = 0
+    @State private var gameOver: Bool = false
+    @State private var finalScore: Int = 0
+    
+    func answerQuestion(_ c: Int) {
+        if c == correctAnswer {
+            score += 1
+            questionNumber += 1
+            reshuffle()
+            newGame()
+        } else {
+            wrongAnswerChoice = "\(countries[c])"
+            gotWrongAnswer = true
+        }
+    }
+    
+    func reshuffle() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+    }
+    
+    func newGame() {
+        if questionNumber == 8 {
+            finalScore = score
+            gameOver = true
+            score = 0
+            countries.shuffle()
+            correctAnswer = Int.random(in: 0...2)
+            questionNumber = 0
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -26,7 +58,6 @@ struct ContentView: View {
                         ForEach(0...2, id: \.self) { c in
                             Button {
                                 answerQuestion(c)
-                                reshuffle()
                             } label: {
                                 Image(countries[c])
                                     .clipShape(.buttonBorder)
@@ -42,32 +73,26 @@ struct ContentView: View {
             }
             .padding()
             .alert("Wrong", isPresented: $gotWrongAnswer) {
-                Button("I suck", role: .destructive) {}
-                Button("I suck", role: .cancel) {}
+//                Button("I suck", role: .destructive) {}
+                Button("I suck", role: .cancel) {
+                    questionNumber += 1
+                    reshuffle()
+                    newGame()
+                }
+            } message: {
+                Text("Thats the flag of \(wrongAnswerChoice)")
             }
-            message: {
-                Text("You Suck")
+            .alert("Game Over", isPresented: $gameOver) {
+                Button("OK") {}
+            } message: {
+                Text("\(Double(finalScore) / 8.0)")
             }
         }
-        
-    }
-    
-    func answerQuestion(_ c: Int) {
-        if c == correctAnswer {
-            score += 1
-        } else {
-           gotWrongAnswer = true
-            score = 0
-        }
-    }
-    
-    func reshuffle() {
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
     }
 }
 ```
-<img width="150" alt="Screenshot 2025-07-05 at 8 57 27 PM" src="https://github.com/user-attachments/assets/b42cf3c5-420c-4719-8567-29d1a642cbb0" />
+<img width="250" alt="Screenshot 2025-07-05 at 10 00 09 PM" src="https://github.com/user-attachments/assets/e8edaabb-0efe-4d9b-b61d-0abf49f929f3" />
+
 
 
 ## VStack, HStack and ZStack
