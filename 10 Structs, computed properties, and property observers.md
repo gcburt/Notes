@@ -238,3 +238,37 @@ var myCar = Car(make: "Porsche", model: "987", seats: 2)
 myCar.shiftDown()
 myCar.shiftUp()
 ```
+
+```swift
+struct Pet {
+    var name: String
+    var age: Int
+}
+
+struct ContentView: View {
+    @State private var newPet = Pet(name: "", age: 0)
+    @State private var pets: [Pet] = []
+    
+    var body: some View {
+        Form {
+            TextField("Name of pet", text: $newPet.name)
+            TextField("Age of pet", value: $newPet.age, format: .number)
+            Button("Add") {
+                pets.append(newPet)
+                newPet = Pet(name: "", age: 0)
+            }
+            ForEach(pets, id: \.name) { pet in
+                Text(pet.name)
+            }
+            Text(pets.map(\.name).joined(separator: ", "))
+        }
+    }
+}
+```
+1. The struct exists outside of ContentView. There's no requirement in this example forcing that. However, if it was *nested* inside of the ContentView struct, the full name would become ContentView.Pet.whatever. Using it in a different location would become weird.
+2. newPet initializes the Pet struct.
+3. The button adds the newPet to the pets array and resets it to default values.
+4. ForEach lists the names of the pets in the pets array
+5. The Text box after ForEach lists them in a single box.
+<img width="236" alt="Screenshot 2025-07-12 at 2 16 27 PM" src="https://github.com/user-attachments/assets/2e1d470a-60e7-4c22-808f-ede87a26ab14" />
+
