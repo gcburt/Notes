@@ -1,3 +1,11 @@
+```swift
+var number: Int? = nil
+    if let unwrappedNumber = number {
+        print(square(number: unwrappedNumber))
+    }
+    ```
+
+
 # 💭 Optionals & Nil Coalescing in Swift  
 <br/>
 
