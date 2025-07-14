@@ -1,9 +1,14 @@
 ```swift
-var number: Int? = nil
-    if let unwrappedNumber = number {
-        print(square(number: unwrappedNumber))
-    }
-    ```
+var myVar: Int? = 1
+
+if let unwrapped = myVar {
+    print("Run if myVar has a value inside")
+}
+
+guard let unwrapped = myVar else {
+    print("Run if myVar doesn't have a value inside")
+}
+```
 
 
 # 💭 Optionals & Nil Coalescing in Swift  
