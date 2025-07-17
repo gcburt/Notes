@@ -50,3 +50,74 @@ struct ContentView: View {
 }
 ```
 > I have no idea
+
+
+```swift
+func testStrings() {
+    let word = "example"
+    let checker = UITextChecker()
+    
+    let range = NSRange(location: 0, length: word.utf16.count)
+    let mispelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+    
+    let correctSpelling = mispelledRange.location == NSNotFound
+}
+```
+
+1. word is the test example.
+2. checker imports a text checker from the UI and initializes it.
+3. range converts the Swift string into an Objective-C string. .utf16 is the old format
+4. mispelled range (in: "The checked word", range: "The objective-C word we made", startingAt: "the first word", wrap: "Do we want to go back to the beginning?", languege: "English"
+5. correctSpelling checks if objective-C found a mispelled word.
+
+```swift
+func testStrings() {
+    let input = "a b c"
+    let letters = input.components(separatedBy: " ") // "\n" does new line
+    let letter = letters.randomElement()
+}
+```
+
+> the components(separatedBy: " ") command identifies the components in the string
+
+
+```swift
+struct ContentView: View {
+    @State private var usedWords: [String] = []
+    @State private var rootWord: String = ""
+    @State private var newWord: String = ""
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .textInputAutocapitalization(.never)
+//                    Button("OK", action: addNewWord)
+                }
+                
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        Text(word)
+                    }
+                }
+            }
+            .navigationTitle(rootWord)
+            .onSubmit(addNewWord)
+        }
+    }
+    
+    func addNewWord() {
+        let formattedWord = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        guard formattedWord.count > 0 else { return }
+        withAnimation {
+            usedWords.insert(formattedWord, at: 0)
+        }
+        newWord = ""
+    }
+}
+```
+1. `.textInputAutocapitalization(.never)` disables auto capitiliazation
+2. `.onSubmit(addNewWord)` makes enter run the code
+3. `.insert(formattedWord, at: 0)` puts the word at the beginning of the array, compared to append, whick puts it at the back.
+4. `.trimmingCharacters(in: .whitespacesAndNewlines)` removes whitespaces and lines
