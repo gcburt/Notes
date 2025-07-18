@@ -121,3 +121,77 @@ struct ContentView: View {
 2. `.onSubmit(addNewWord)` makes enter run the code
 3. `.insert(formattedWord, at: 0)` puts the word at the beginning of the array, compared to append, whick puts it at the back.
 4. `.trimmingCharacters(in: .whitespacesAndNewlines)` removes whitespaces and lines
+
+```
+   import SwiftUI
+
+struct ContentView: View {
+    @State private var usedWords: [String] = []
+    @State private var rootWord: String = ""
+    @State private var newWord: String = ""
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .textInputAutocapitalization(.never)
+//                    Button("OK", action: addNewWord)
+                }
+                
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        Text(word)
+                    }
+                }
+            }
+            .navigationTitle(rootWord)
+            .onSubmit(addNewWord)
+            .onAppear(perform: newGame)
+        }
+    }
+    
+    func addNewWord() {
+        let formattedWord = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        guard formattedWord.count > 0 else { return }
+        withAnimation {
+            usedWords.insert(formattedWord, at: 0)
+        }
+        newWord = ""
+    }
+    
+    func newGame() {
+        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWords = try? String(contentsOf: startWordsURL, encoding: .utf8) {
+                let allWords = startWords.components(separatedBy: "\n")
+                rootWord = allWords.randomElement() ?? "silkworm"
+                return
+            }
+        }
+        
+        fatalError("start.txt loading error")
+    }
+    
+    func isOriginal(_ word: String) -> Bool {
+        !usedWords.contains(word)
+    }
+    
+    func containsSameLetters(_ word: String) -> Bool {
+        var tempWord = rootWord
+        var letterArray: [Character] = Array(word)
+        var letterArrayRoot: [Character] = Array(tempWord)
+        
+        
+        for letter in letterArray {
+            if let index = letterArrayRoot.firstIndex(of: letter) {
+                letterArrayRoot.remove(at: index)
+            } else {
+                return false
+            }
+        }
+        
+        return true
+    }
+}
+```
+half ass code
