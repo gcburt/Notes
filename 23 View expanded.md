@@ -1,3 +1,51 @@
+## Using the ternary operator/ aka conditional modifiers
+
+```swift
+struct ContentView: View {
+    let familyMembers = ["Grant", "Hunter", "Amanda", "Mike", "Scott", "Julie"]
+    @State private var yourName: String = ""
+    
+    var body: some View {
+        Form {
+            Section("What is your name?") {
+                Picker("Name", selection: $yourName) {
+                    ForEach(familyMembers, id: \.self) { a in
+                        Text("\(a)")
+                    }
+                }
+            }
+            Text(yourName)
+                .bold(yourName == "Grant" ? true : false)
+        }
+    }
+}
+```
+> `.bold(yourName == "Grant" ? true : false)` WTF
+<img width="150" alt="Screenshot 2025-07-08 at 1 45 24 PM" src="https://github.com/user-attachments/assets/eb8bef13-67e2-4c13-9606-e004cc24077a" />
+
+## Environmental modifiers
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Form {
+                Text("One")
+                Text("Two")
+                    .font(.largeTitle)
+                Text("Three")
+                Text("Four")
+                Text("Five")
+            }
+        }
+        .font(.footnote)
+    }
+}
+```
+> Some modifiers can be applied on containers, ex. VStack. They can sometimes be overridden by applying a different modifier to the child View. Doesn't always work. Not all modifiers are environmental and there's no convenient way to know ahead of time.
+
+<img width="233" alt="Screenshot 2025-07-08 at 1 53 40 PM" src="https://github.com/user-attachments/assets/e6a2db86-1217-406f-ae5c-e5965eb94c3b" />
+
 ## Creating views as properties
 ```swift
 struct ContentView: View {
@@ -70,54 +118,6 @@ struct ContentView: View {
 ```
 
 <img width="150" alt="Screenshot 2025-07-07 at 2 05 21 PM" src="https://github.com/user-attachments/assets/618c766f-cea8-4439-a50a-96a53cf35e6e" />
-
-## Using the ternary operator/ aka conditional modifiers
-
-```swift
-struct ContentView: View {
-    let familyMembers = ["Grant", "Hunter", "Amanda", "Mike", "Scott", "Julie"]
-    @State private var yourName: String = ""
-    
-    var body: some View {
-        Form {
-            Section("What is your name?") {
-                Picker("Name", selection: $yourName) {
-                    ForEach(familyMembers, id: \.self) { a in
-                        Text("\(a)")
-                    }
-                }
-            }
-            Text(yourName)
-                .bold(yourName == "Grant" ? true : false)
-        }
-    }
-}
-```
-> `.bold(yourName == "Grant" ? true : false)` WTF
-<img width="150" alt="Screenshot 2025-07-08 at 1 45 24 PM" src="https://github.com/user-attachments/assets/eb8bef13-67e2-4c13-9606-e004cc24077a" />
-
-## Environmental modifiers
-
-```swift
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Form {
-                Text("One")
-                Text("Two")
-                    .font(.largeTitle)
-                Text("Three")
-                Text("Four")
-                Text("Five")
-            }
-        }
-        .font(.footnote)
-    }
-}
-```
-> Some modifiers can be applied on containers, ex. VStack. They can sometimes be overridden by applying a different modifier to the child View. Doesn't always work. Not all modifiers are environmental and there's no convenient way to know ahead of time.
-
-<img width="233" alt="Screenshot 2025-07-08 at 1 53 40 PM" src="https://github.com/user-attachments/assets/e6a2db86-1217-406f-ae5c-e5965eb94c3b" />
 
 ## Creating custom Views
 
