@@ -46,7 +46,8 @@ struct ContentView: View {
 
 <img width="233" alt="Screenshot 2025-07-08 at 1 53 40 PM" src="https://github.com/user-attachments/assets/e6a2db86-1217-406f-ae5c-e5965eb94c3b" />
 
-## Creating views as properties
+## Creating views as properties 
+
 ```swift
 struct ContentView: View {
 
@@ -82,6 +83,8 @@ struct ContentView: View {
 }
 ```
 > **Views** can be created outside of the main *body:* property. Create a new property, assign some functionality, and add it to the main *body:*. `@ViewBuilder` is how i'm going to do it.
+
+#### This will not accept parameters
 
 1. `singleLine` is simply a single line.
 2. `doubleLine1` contains two Text boxes. `@ViewBuilder` applies all the same `body:` properties and methods to the custom property. 
@@ -119,6 +122,7 @@ struct ContentView: View {
     }
 }
 ```
+> This view accepts properties. It can be *external or nested*. If it's external, it can be accessed globally.
 
 <img width="150" alt="Screenshot 2025-07-07 at 2 05 21 PM" src="https://github.com/user-attachments/assets/618c766f-cea8-4439-a50a-96a53cf35e6e" />
 
