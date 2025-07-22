@@ -49,6 +49,7 @@ struct ContentView: View {
 ## Creating views as properties
 ```swift
 struct ContentView: View {
+
     let singleLine = Text("Single line...")
     
     @ViewBuilder var doubleLine1: some View {
@@ -69,6 +70,7 @@ struct ContentView: View {
             Text("is a group.")
         }
     }
+
     var body: some View {
         VStack(spacing: 30) {
             singleLine
@@ -79,9 +81,10 @@ struct ContentView: View {
     }
 }
 ```
-> **Views** can be created outside of the *body:* property. You can just create a *new property* to add to the existing and required *body: property*. This example has 4 custom properties alongside the main *body:* property.
+> **Views** can be created outside of the main *body:* property. Create a new property, assign some functionality, and add it to the main *body:*. `@ViewBuilder` is how i'm going to do it.
+
 1. `singleLine` is simply a single line.
-2. `doubleLine1` contains two Text boxes. `@ViewBuilder` applies all the same `body:` properties and methods to the custom property.
+2. `doubleLine1` contains two Text boxes. `@ViewBuilder` applies all the same `body:` properties and methods to the custom property. 
 3. `doubleLine2` is just a `VStack` For all intents and purposes, its basically the same as `singleLine`
 4. `doubleLine3` uses a Group. I don't really know what that does yet. The format gets moved around differently.
 <img width="150" alt="Screenshot 2025-07-07 at 1 36 08 PM" src="https://github.com/user-attachments/assets/f9492e70-5271-42fc-b969-6009ffa6913f" />
