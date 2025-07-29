@@ -92,40 +92,6 @@ struct ContentView: View {
 4. `doubleLine3` uses a Group. I don't really know what that does yet. The format gets moved around differently.
 <img width="150" alt="Screenshot 2025-07-07 at 1 36 08 PM" src="https://github.com/user-attachments/assets/f9492e70-5271-42fc-b969-6009ffa6913f" />
 
-## Creating a new View
-
-```swift
-struct ContentView: View {
-    
-    struct CustomText: View {
-        var text: String
-        
-        var body: some View {
-            Text(text)
-                .frame(width: 200, height: 100)
-                .background(.red)
-                .foregroundStyle(.white)
-                .font(.title)
-        }
-    }
-    
-    var body: some View {
-        VStack {
-            Text("Text")
-                .frame(width: 200, height: 100)
-                .background(.red)
-                .foregroundStyle(.white)
-                .font(.title)
-            
-            CustomText(text: "Also Text")
-        }
-    }
-}
-```
-> This view accepts properties. It can be *external or nested*. If it's external, it can be accessed globally.
-
-<img width="150" alt="Screenshot 2025-07-07 at 2 05 21 PM" src="https://github.com/user-attachments/assets/618c766f-cea8-4439-a50a-96a53cf35e6e" />
-
 ## Creating custom Views
 
 ```swift
@@ -154,7 +120,7 @@ struct CapsuleView: View {
     }
 }
 ```
-> I have created a whole new struct that conforms to view. I'm passing it in the body property.
+> I have created a whole new struct that conforms to view. I'm passing it in the body property. This can also be nested.
 1. `.foregroundStyle(.black)` doesn't work because it has already been assigned in the CapsuleView.
 2. `opacity(0.5)` has not been previously assigned.
 <img width="150" alt="Screenshot 2025-07-08 at 2 09 12 PM" src="https://github.com/user-attachments/assets/e5481bce-3886-46b4-8ed5-5dd1fa32f480" />
