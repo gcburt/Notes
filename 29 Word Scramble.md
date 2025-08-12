@@ -49,8 +49,14 @@ struct ContentView: View {
     }
 }
 ```
-> I have no idea
+> Comparable to loading images from the assets file.
+> When I make an app, all the files are stored inside a folder called a bundle. I don't know why yet, but sometimes there will be multiple bundles for a single app. Here I am attempting to load a .txt file from my *main* bundle.
 
+`if let fileURL = Bundle.main.url(forResource: "somefile", withExtension: "txt")`
+> First, i'm using `if let` to assign fileURL to a URL. It's located in Bundle.main. It's a .url named `somefile.txt`.
+
+`if let fileContents = try? String(contentsOf: fileURL, encoding: .utf8) {`
+> If I find the document, I'll look inside with `if let` again to assign the new fileContents constant to a very very **very** long string. 
 
 ```swift
 func testStrings() {
