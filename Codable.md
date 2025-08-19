@@ -40,4 +40,25 @@ struct UpdateProfileParams: Encodable {
 
 > Required. Literally just a key. Notice the snake_case = fullName 
 
+```swift
+struct User: Codable {
+    let firstName: String
+    let lastName: String
+}
 
+struct ContentView: View {
+    @State private var user = User(firstName: "Taylor", lastName: "Burton")
+    
+    var body: some View {
+        Button("Save user") {
+            let encoder = JSONEncoder()
+            
+            if let data = try? encoder.encode(user) {
+                UserDefaults.standard.set(data, forKey: "UserData")
+            }
+        }
+    }
+}
+```
+
+> This encodes our instance of user into a JavaScript Object Notation, JSON, file.
