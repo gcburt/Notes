@@ -313,3 +313,80 @@ struct ContentView: View {
 
 <img width="150" alt="Screenshot 2025-08-29 at 3 24 25 PM" src="https://github.com/user-attachments/assets/11fc32b9-f56b-40db-b2fa-4731b16d06d4" />
 
+# Notes for rounds
+
+
+### ContentView
+```swift
+enum Route: Hashable {
+    case second
+    case third
+    case fourth
+}
+
+struct ContentView: View {
+    @State private var path = NavigationPath()
+    
+    var body: some View {
+        NavigationStack(path: $path) {
+            TabView {
+                Tab("Second", systemImage: "house") {
+                    NavigationLink("Second View", value: Route.second)
+                }
+                Tab("Third", systemImage: "house") {
+                    NavigationLink("Third View", value: Route.third)
+                }
+                Tab("Fourth", systemImage: "house") {
+                    FourthView()
+                }
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .second: SecondView()
+                case .third: ThirdView()
+                case .fourth: FourthView()
+                }
+            }
+        }
+    }
+}
+```
+
+### SecondView
+
+```swift
+struct SecondView: View {
+    var body: some View {
+        Text("Second view")
+        NavigationLink("Third View", value: Route.third)
+        NavigationLink("fourth View", value: Route.fourth)
+    }
+    
+    init() {
+        print("2")
+    }
+}
+
+struct ThirdView: View {
+    var body: some View {
+        Text("Third view")
+        NavigationLink("fourth View", value: Route.fourth)
+    }
+    
+    init() {
+        print("3")
+    }
+}
+
+struct FourthView: View {
+    var body: some View {
+        Text("fourth view")
+    }
+    
+    init() {
+        print("4")
+    }
+}
+```
+
+> These are two seperate files. (It works just fine for a single one too.) The ContentView contains the enum for all the destination locations. Additionally, it has the entire route network. `NavigationLink("Title of View", value: Route.enumLink)` now takes the place of calling the view. This allows the system to not preload the link. Note the `FourthView()` inside the TabView does the opposite. It preloads on contact.
