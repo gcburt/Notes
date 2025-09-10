@@ -40,6 +40,13 @@ struct ContentView: View {
 
 <img width="150" alt="Screenshot 2025-08-22 at 3 32 08 PM" src="https://github.com/user-attachments/assets/3c4a45dd-b932-4de7-b18c-4f0e232491a8" />
 
+## .basedOnSize
+
+```swift
+.scrollBounceBehavior(.basedOnSize)
+```
+
+> Add this modifier to disable scrollview when the view fits inside the screen.
 
 ## LazyVStack
 
