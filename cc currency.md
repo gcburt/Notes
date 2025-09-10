@@ -27,3 +27,7 @@ struct ContentView: View {
 let code = Locale.current.currency?.identifier ?? "USD"
 Text(money, format: .currency(code: code))
 ```
+
+## Decimal
+
+> Whenever working with money, use the `Decimal` type instead of Int, Double, Float, etc. It doesn't round at all.
