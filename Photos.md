@@ -63,3 +63,20 @@ struct ContentView: View {
 > - `maxSelectionCount` Memory heavy task.
 > - Some type of loop for displaying
 > - The task requires a clean slate and then just loads one by one.
+
+## Custom label
+```swift
+PhotosPicker(selection: $pickerItems, maxSelectionCount: 5, matching: .images) { 
+    Label("Select a picture", systemImage: "photo")
+}
+```
+
+<img height="60" alt="Screenshot 2025-10-02 at 6 13 50 PM" src="https://github.com/user-attachments/assets/0f37c479-939d-4ea1-9636-508a5554a0c3" />
+
+## Oh shit foo! I can block screenshots!
+
+```swift
+PhotosPicker(selection: $pickerItems, maxSelectionCount: 5, matching: .any(of: [.images, .not(.screenshots)])) {
+    Label("Select a picture", systemImage: "photo")
+}
+```
