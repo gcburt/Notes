@@ -11,4 +11,4 @@ struct User: Comparable {
 }
 ```
 
-> In order for this struct to conform to comparable, the static function `<` is required. 
+> In order for this struct to conform to comparable, the static function `<` is required. lhs/rhs (left/right hand side) are coding conventions.
