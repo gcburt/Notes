@@ -1,4 +1,6 @@
-### 
+### Classes expanded
+
+> The initial class instance is created with @State. Afterwards, it is passed to child view using @Bindable. @State and @Bindable create bindings that watch the /properties/ of the class. This is different than @State used on a struct, which watches the entire struct for changes. Kinda the same thing.
 
 ### SwiftData
 
