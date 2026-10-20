@@ -1,6 +1,6 @@
 # Structs in Swift
 
-Structs contain properties, methods, and *mutating functions*. When a struct is initialized, all properties must have a value. 
+Structs contain properties, methods, and *mutating functions*. When a struct is initialized, all properties must have a value. Because a struct can be created with a let constant, variables inside cannot be freely modified. 
 
 ## 1. Syntax & Terminology
 
