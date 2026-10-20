@@ -36,24 +36,48 @@ struct Person {
 ---
 
 ```swift
-@Observable
-class User {
-    var name = "Grant"
-}
-
-struct ContentView: View {
-    @State var user = User()
+struct ClassesAndStructs: View {
+    @State var person = Person()
+//    let person = Person()
+    
+    @State var newName = ""
     
     var body: some View {
+        NavigationView {
+            Form {
+                Text(person.name)
+                TextField("Name:", text: $newName)
+                Button("Submit") {
+                    person.name = newName
+                }
+                NavigationLink("Next page") { PageTwo(person: $person, newName: $newName) }
+            }
+        }
+    }
+}
+
+//@Observable
+struct Person {
+    var name: String = "Grant"
+}
+
+struct PageTwo: View {
+    @Binding var person: Person
+    
+    @Binding var newName: String
+    var body: some View {
         Form {
-            Text(user.name)
-            TextField("Name", text: $user.name)
+            Text(person.name)
+            TextField("Name:", text: $newName)
+            Button("Submit") {
+                person.name = newName
+            }
         }
     }
 }
 ```
-<img width="150" alt="Screenshot 2025-08-17 at 12 53 57 PM" src="https://github.com/user-attachments/assets/89a4864f-6520-4b18-955e-30427b5d235f" />
 
-> State monitors changes in the User type. Technically, the User class isn't changing. The variables are. If i want my `@State` variable to watch my class, I need to add @Observable. 
+
+> If I want my @State variable to be connected to another variable in another view, use @binding in conjunction with a $. Now, when I pass my value into the second view, I can change it from both locations and it will look in memory at the same location.
 
 > `@Observable` monitors the classes content for changes.
