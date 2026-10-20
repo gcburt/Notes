@@ -1,29 +1,37 @@
 # Structs in Swift
 
-Structs contain properties, methods, and *mutating functions*. When a struct is initialized, all properties must have a value. Because a struct can be created with a let constant, variables inside cannot be freely modified. 
+Structs contain properties, methods, and *mutating functions*. When a struct is initialized, all properties must have a value. var means a value can be modified. When a struct is created with a let constant *everything* downstream is locked.
 
-## 1. Syntax & Terminology
+## 1. @State
 
 ```swift
-struct Person {
-    let name: String
-    var age: Int
-    var dickLength: Double
+struct ClassesAndStructs: View {
+    @State var person = Person()
+//    let person = Person()
     
-    func greeting() {
-        print("sup nerds")
-    }
+    @State var newName = ""
     
-    mutating func seeGirl() {
-        dickLength += 1
+    var body: some View {
+        NavigationView {
+            Form {
+                Text(person.name)
+                TextField("Name:", text: $newName)
+                Button("Submit") {
+                    person.name = newName
+                }
+                NavigationLink("Next page") { PageTwo(person: person) }
+            }
+        }
     }
 }
 
-var me = Person(name: "Grant", age: 32, dickLength: 3.5) // ➡️ The syntax is almost identical to a function. This is called an **initializer**.
-me.seeGirl() // ➡️ 4.5
+//@Observable
+struct Person {
+    var name: String = "Grant"
+}
 ```
 
-> 
+> Because a struct can be created with a let constant, variables inside could potentially be locked in and not freely modified. @State is a special container that stores the values outside of the struct, so that it may be modified. 
 
 ---
 
