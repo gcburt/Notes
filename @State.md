@@ -1,3 +1,32 @@
+# Structs in Swift
+
+Structs contain properties, methods, and *mutating functions*. When a struct is initialized, all properties must have a value. 
+
+## 1. Syntax & Terminology
+
+```swift
+struct Person {
+    let name: String
+    var age: Int
+    var dickLength: Double
+    
+    func greeting() {
+        print("sup nerds")
+    }
+    
+    mutating func seeGirl() {
+        dickLength += 1
+    }
+}
+
+var me = Person(name: "Grant", age: 32, dickLength: 3.5) // ➡️ The syntax is almost identical to a function. This is called an **initializer**.
+me.seeGirl() // ➡️ 4.5
+```
+
+> 
+
+---
+
 ```swift
 @Observable
 class User {
