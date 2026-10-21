@@ -14,3 +14,9 @@ print(result)
 ```
 
 Similar to `throw` and `try`, async functions use the marking keyword: `async` when creating the function, and `await` when calling it.
+
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/133ebf85-2f68-4ae3-971b-becd3f39e9bd" />
+
+- Concurrent: at the same time
+- Consecutive: one at a time
